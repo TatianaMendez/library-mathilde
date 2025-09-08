@@ -1,13 +1,16 @@
-export interface spacesList {
-    id: string; 
-    validations: string[]; 
-    // environment: string;
-    config: {}; 
-    dev: dataPlacemet;
-    prod: dataPlacemet
+//Interfaces para Tealium
+export interface SpacesList {
+    validations?:string[];
+    spaces:contentSpaces[];
 }
-
-export interface dataPlacemet {
+export interface contentSpaces {
+    id: string; 
+    search:string;
+    config: {}; 
+    dev: DataPlacemet;
+    prod: DataPlacemet
+}
+export interface DataPlacemet {
     defaultPlacement: {
         mobile: number; 
         tablet: number;
@@ -21,4 +24,18 @@ export interface dataPlacemet {
             mobile: number;
         },
     }[]
+}
+
+//Interfaces para preload
+export interface objectSpacesList {
+    validations?:string[]; 
+    enviroment:string; 
+    spaces:objectContentSpaces[];
+}
+
+export interface objectContentSpaces {
+    id: string; 
+    config: {}; 
+    search:string;
+    spaces: DataPlacemet;
 }

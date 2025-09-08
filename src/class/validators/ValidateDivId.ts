@@ -1,7 +1,7 @@
 import type { Validate } from '../../interfaces/Validate';
 
 export class ValidateDivId implements Validate {
-  constructor(public name: string) {}
+  constructor() {}
   test(): boolean {
 
     

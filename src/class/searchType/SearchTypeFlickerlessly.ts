@@ -1,12 +1,11 @@
 import type { SearchType } from '../../interfaces/SearchType';
+import { of, Observable } from 'rxjs';
+import { espacioEncontrado$ } from '../core/EspaciosObservable';
+
 
 export class SearchTypeFlickerlessly implements SearchType {
-  constructor(public divId: string) {}
-
-  execute(): boolean {
+  constructor(public divId: string) {
     console.log('Se ejecuta la búsqueda flickerlessly');
-    this.logicFlickerlessly();
-    return true;
   }
 
   static onReady(...configs: { selector: string, success?: Function, persist?: boolean }[]) {
@@ -74,17 +73,23 @@ export class SearchTypeFlickerlessly implements SearchType {
     });
   }
 
-  logicFlickerlessly() {
+  execute(): Promise<boolean> {
     console.log("Adobe Target - Flickerlessly: OK");
-    // Ejemplo de uso:
-    SearchTypeFlickerlessly.onReady({
-      selector: "#" + this.divId,
-      success: function (el: any) {
-        let location = true; 
-        console.log('Encontrado', el);
-        return location;
-      },
-      persist: true,
+    return new Promise((resolve) => {
+      let timeoutId = setTimeout(() => {
+        console.warn('Timeout: el elemento no apareció');
+        resolve(false);
+      }, 2000); 
+
+      SearchTypeFlickerlessly.onReady({
+        selector: "#" + this.divId,
+        success: (el: string) => {
+          clearTimeout(timeoutId);  
+          console.log('Encontrado', el);
+          resolve(true);
+        },
+        persist: true,
+      });
     });
   }
 }

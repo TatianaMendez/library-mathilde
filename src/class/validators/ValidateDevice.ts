@@ -1,7 +1,7 @@
 import type { Validate } from '../../interfaces/Validate';
 
 export class ValidateDevice implements Validate {
-  constructor(public name: string) {}
+  constructor() {}
 
   screenIdentifier():string {
     const width:number = window.innerWidth; 

@@ -1,4 +1,4 @@
-export enum validationType {
+export enum ListValidationType {
   Preenrolled =  'PREENROLLED',
   Token = 'TOKEN',
 };

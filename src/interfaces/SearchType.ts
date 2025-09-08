@@ -1,4 +1,6 @@
+import type { Observable } from "rxjs";
+
 export interface SearchType {
   divId: string;
-  execute(): boolean;
+  execute(): Promise<boolean>;
 }
