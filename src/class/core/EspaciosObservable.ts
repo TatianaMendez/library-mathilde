@@ -1,7 +1,7 @@
 // src/class/core/EspaciosObservable.ts
 import { Subject, BehaviorSubject } from 'rxjs';
 
-// Define el tipo adecuado para tu espacio
+// Define el tipo adecuado para espacio
 export type Espacio = {
   id: string;
   config: any;
